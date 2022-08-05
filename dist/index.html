@@ -2,13 +2,95 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Todo List</title>
+    <title>ToDo List</title>
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/check-double.svg" type="image/x-icon">
   </head>
 
   <body>
-    
+
+    <div class="mainContainer">
+
+      <!--===== H E A D E R =====-->
+      <div class="header">
+        <div class="btnHead1">
+          <button><img src="images/dashboard.png" alt=""></button>
+          <p>ToDo List</p>
+        </div>
+        <div class="btnHead2">
+          <button><img src="images/plus.png" alt=""></button>
+          <button><img src="images/gear.svg" alt=""></button>
+        </div>
+      </div>
+
+      <!--===== S I D E B A R =====-->
+      <div class="sidebar">
+        <h2>Projects</h2>
+
+        <div id="allProjects">
+
+          <div class="projects">
+            <p>ToDo List</p>
+            <!--<img src="images/xmark.svg" alt="">-->
+          </div>
+
+        </div>
+
+        <div class="projects2" id="showAddProjects">
+          <p>Add New Project</p>
+          <img src="images/plus.png" alt="">
+        </div>
+
+        <div class="addProjects" id="addProjects">
+          <input type="text" class="inputProjects" id="inputProjects" maxlength="20" autofocus required>
+          <button id="btnAceptProject">Acept</button>
+          <button id="btnCancelProject">Cancel</button>
+        </div>
+      </div>
+
+      <!--===== C O N T E N T =====-->
+      <div class="content" id="content">
+        <div class="displayContent" id="displayContent">
+
+          <h2 id="h2Task">ToDo List</h2>
+          <h6 id="dateProject" hidden>Date</h6>
+
+          <div id="taskContent">
+            <div id="allTasks">
+
+              <div class="cardToDo">
+                <input type="checkbox" class="checkbox" id="checked">
+                <input type="text" class="inputTask" id="inputTask">
+                <div class="imgToDo">
+                  <p id="dateTask">Date</p>
+                  <img src="images/unlock.svg" alt="">
+                  <img src="images/trash.svg" alt="">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="cardToDo2" id="showAddToDo">
+            <img src="images/plus.png" alt="" id="addBtn">
+          </div>
+
+          <div class="addTask" id="addTask">
+            <input type="text" class="inputAddTask" id="inputAddTask" required>
+            <button id="btnAceptTask">Acept</button>
+            <button id="btnCancelTask">Cancel</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!--===== F O O T E R =====-->
+      <footer>Copyright © 2022 DiferoX</footer>
+      
+    </div>
+
+
   </body>
 
 </html>

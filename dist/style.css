@@ -6,5 +6,567 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+:root 
+{
+  --firstLight: #eee;
+  --secondLight: #ddd;
+  --firstDark: rgba(17, 17, 17, 0.8);
+  --secondDark: #444;
+  --radial: rgb(190, 50, 50);
+}
+
+.mainContainer
+{
+  position: relative;
+  background-color: #ddd;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 35vh 1fr;
+  grid-template-rows: 10vh 85vh 5vh;
+}
+
 
 /* ================= H E A D E R ================= */
+
+.header
+{
+  position: relative;
+  /*
+  top: 0;
+  left: 0;
+  height: 10vh;
+  width: 100%;
+  */
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  color: white;
+  font-size: 5vh;
+  font-weight: bolder;
+  background-color: var(--firstDark);
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header::before
+{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 10vh;
+  width: 100%;
+  /*background-color: rgba(190, 50, 50, 0.9);*/
+  border-top: 5px solid rgba(0, 0, 0, 0.9);
+  border-bottom: 5px solid rgba(0, 0, 0, 0.9);
+  filter: blur(5px);
+  z-index: 4;
+}
+
+.btnHead1
+{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr 2fr;
+  z-index: 5;
+}
+
+.btnHead1 button
+{
+  background: radial-gradient(rgb(0, 0, 0), rgb(190, 50, 50));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: 1s;
+}
+
+.btnHead2
+{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+
+.btnHead2 button
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(transparent, transparent, rgb(190, 50, 50), red);
+  padding: 10px;
+  border-radius: 50%;
+  transition: 1s;
+  z-index: 5;
+}
+
+.btnHead2 button:hover
+{
+  transform: rotate(90deg);
+}
+
+.header button
+{
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  border: none;
+  margin: 0 20px;
+}
+
+
+/* ================= S I D E B A R ================= */
+
+.sidebar
+{
+  position: relative;
+  /*
+  top: 10vh;
+  left: 0;
+  */
+  background-color: var(--radial);
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  height: 85vh;
+  width: 35vh;
+  padding: 100px 30px;
+  z-index: 4;
+}
+
+/*
+.sidebar::before
+{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 85vh;
+  width: 35vh;
+  /*background-color: rgba(80, 50, 190, 0.9);
+  background-color: var(--radial);
+  border-left: 5px solid rgba(0, 0, 0, 0.9);
+  border-right: 5px solid rgba(0, 0, 0, 0.9);
+  filter: blur(5px);
+  z-index: 3;
+}
+*/
+
+.sidebar h2
+{
+  margin-bottom: 30px;
+  color: white;
+  z-index: 5;
+}
+
+.projects
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  color: black;
+  background-image: linear-gradient(to top left, rgb(0, 0, 100), rgb(120, 215, 255), rgb(120, 215, 255));
+  font-weight: bolder;
+  margin: 10px 0;
+  padding-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+.projects:hover
+{
+  background-image: linear-gradient(to top left, purple, rgb(0, 120, 175), rgb(0, 0, 100), rgb(0, 0, 100), rgb(0, 0, 100));
+  color: aqua;
+  box-shadow: 5px 5px 10px aqua;
+}
+
+.projects2
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  background-color: #aaa;
+  font-weight: bolder;
+  margin: 10px 0;
+  padding-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.projects2:hover
+{
+  background-color: #555;
+  color: white;
+  box-shadow: 5px 5px 10px black;
+}
+
+.projects h6
+{
+  position: absolute;
+  font-size: 5px;
+  visibility: hidden;
+}
+
+.projects img, .projects2 img
+{
+  height: 30px;
+  width: 30px;
+  transition: 1s;
+}
+
+.projects:hover img, .projects2:hover img
+{
+  transform: rotate(90deg);
+}
+
+.addProjects
+{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  padding: 15px;
+  gap:5px 0;
+  /*background-image: linear-gradient(to top left, rgb(190, 50, 50), white, rgb(190, 50, 50), rgb(190, 50, 50), rgb(190, 50, 50));*/
+  background-image: linear-gradient(to top left, purple, rgb(0, 120, 175), rgb(0, 0, 100), rgb(0, 0, 100), rgb(0, 0, 100));
+  border: 2px solid white;
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px black;
+}
+
+.inputProjects
+{
+  height: 30px;
+  width: 100%;
+  font-size: 15px;
+  padding: 0 5px;
+}
+
+.addProjects button
+{
+  height: 30px;
+  width: 50%;
+  font-weight: bolder;
+  border: none;
+}
+
+#btnAceptProject
+{
+  background-color: chartreuse;
+  color: black;
+  text-shadow: 2px 2px 2px white;
+}
+
+#btnAceptProject:hover
+{
+  box-shadow: 5px 5px 10px black;
+}
+
+#btnCancelProject
+{
+  background-color: crimson;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+
+#btnCancelProject:hover
+{
+  box-shadow: 5px 5px 10px black;
+}
+
+
+/* ================= C O N T E N T ================= */
+
+.content
+{
+  padding: 50px 80px;
+  background-image: linear-gradient(to top left, rgb(0, 0, 200), rgb(205, 240, 255), rgb(205, 240, 255), rgb(205, 240, 255));
+}
+
+.displayContent, #taskContent
+{
+  display: grid;
+  align-items: center;
+  grid-template-rows: repeat(auto, 20px);
+  gap:  20px 50px;
+}
+
+.cardToDo
+{
+  height: 5vh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  position: relative;
+  grid-template-columns: 1fr 12fr 1fr;
+  gap: 10px;
+  color: white;
+  background-image: linear-gradient(to top left, purple, rgb(0, 120, 175), rgb(0, 0, 100), rgb(0, 0, 100), rgb(0, 0, 100));
+  border-radius: 15px;
+  border-right: 5px solid aqua;
+  border-bottom: 5px solid aqua;
+  margin: 5px 0;
+  padding: 25px 0;
+  padding-right: 5px;
+  transition: 2s;
+}
+
+.cardToDo:hover
+{
+  box-shadow: 0 0 20px aqua,
+  inset -5px -5px 10px #222;
+}
+
+.cardToDo2
+{
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  position: relative;
+  gap: 10px;
+  color: white;
+  background-color: #aaa;
+  border-radius: 15px;
+  border-right: 5px solid #111;
+  border-bottom: 5px solid #111;
+  padding: 25px 0;
+  padding-right: 5px;
+  transition: 2s;
+}
+
+.cardToDo2:hover
+{
+  background-color: #555;
+  box-shadow: 0 0 20px #111,
+  inset -5px -5px 10px #222;
+}
+
+#addBtn
+{
+  height: 50px;
+  width: 50px;
+  border: 4px solid black;
+  border-radius: 50%;
+}
+
+.cardToDo2 #addBtn
+{
+  transition: 2s;
+}
+
+.cardToDo2:hover #addBtn
+{
+  background-color: #aaa;
+  border: 4px solid white;
+  transform: rotate(180deg);
+}
+
+.imgToDo
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.imgToDo p
+{
+  position: absolute;
+  font-size: 1px;
+  visibility: hidden;
+}
+
+.imgToDo img
+{
+  background-color: white;
+  border-radius: 5px;
+  height: 30px;
+  width: 30px;
+  padding: 2px;
+}
+
+.inputTask
+{
+  width: 100%;
+  color: var(--firstLight);
+  text-shadow: 1px 1px 2px black;
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  padding: 0 20px;
+}
+
+
+/* ======== input[type="checkbox"] ======== */
+
+input[type="checkbox"]
+{
+  position: relative;
+  width: 70px;
+  height: 40px;
+  margin: 10px;
+  outline: none;
+  background: #111;
+  -webkit-appearance: none;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: -5px -5px 20px rgba(255, 255, 255, 0.1),
+              5px 5px 10px rgba(0, 0, 0, 1),
+              inset -2px -2px 5px rgba(255, 255, 255, 0.1),
+              inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+              0 0 0 2px #1f1f1f;
+  transition: 0.5s;
+}
+
+input[type="checkbox"]:checked
+{
+  background-color: greenyellow;
+}
+
+input[type="checkbox"]::before
+{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(to top, #000, #555);
+  border-radius: 20px;
+  box-shadow: 0 0 0 1px #232323;
+  transform: scale(0.98, 0.96);
+  transition: 0.5s;
+}
+
+input[type="checkbox"]:checked::before
+{
+  left: 30px;
+}
+
+input[type="checkbox"]::after
+{
+  content: "";
+  position: absolute;
+  /*clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);*/
+  clip-path: circle(25.0% at 50% 50%);
+  left: 10px;
+  top: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
+  border-radius: 20%;
+  background: orangered;
+  transition: 0.5s ease all;
+}
+
+input[type="checkbox"]:checked::after
+{
+  clip-path: polygon(0 40%, 40% 70%, 100% 0, 100% 30%, 40% 100%, 0 70%);
+  left: calc(30px + 10px);
+  background: greenyellow;
+  box-shadow: 0 0 5px greenyellow,
+              0 0 15px greenyellow,
+              0 0 30px greenyellow;
+}
+
+/* ============================== */
+
+.addTask
+{
+  width: 60%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  padding: 15px;
+  gap:20px 0;
+  /*background-image: linear-gradient(to top left, rgb(190, 50, 50), white, rgb(190, 50, 50), rgb(190, 50, 50), rgb(190, 50, 50));*/
+  background-image: linear-gradient(to top left, purple, rgb(0, 120, 175), rgb(0, 0, 100), rgb(0, 0, 100), rgb(0, 0, 100));
+  border: none;
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px black,
+  inset -5px -5px 10px black;
+}
+
+.inputAddTask
+{
+  background-color: rgba(255, 255, 255, 0.6);
+  height: 50px;
+  width: 100%;
+  font-size: 25px;
+  padding: 0 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+  box-shadow: inset 3px 3px 10px black;
+}
+
+.addTask button
+{
+  height: 40px;
+  width: 200px;
+  margin: 0 20px;
+  font-size: 20px;
+  font-weight: bolder;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset -5px -5px 10px black;
+}
+
+#btnAceptTask
+{
+  background-color: chartreuse;
+  color: black;
+  text-shadow: 2px 2px 2px white;
+}
+
+#btnAceptTask:hover
+{
+  box-shadow: 5px 5px 10px black,
+  inset -5px -5px 10px black;
+}
+
+#btnCancelTask
+{
+  background-color: crimson;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+
+#btnCancelTask:hover
+{
+  box-shadow: 5px 5px 10px black,
+  inset -5px -5px 10px black;
+}
+
+
+/* ================= F O O T E R ================= */
+
+footer
+{
+  /*
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  */
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
+  
+  font-size: 2vh;
+  background-color: var(--firstDark);
+  color: white;
+  border-top: 5px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+}
