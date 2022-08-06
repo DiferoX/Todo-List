@@ -18,10 +18,23 @@
           <button><img src="images/dashboard.png" alt=""></button>
           <p>ToDo List</p>
         </div>
+        <div class="menu">
+          <div class="BtnMenu1">
+            <button id="btnAll">All</button>
+            <button id="btnPending">Pending</button>
+            <button id="btnCompleted">Completed</button>
+          </div>
+          <div class="BtnMenu2">
+            <button id="btnPriorityHigh">High Priority</button>
+            <button id="btnPriorityLow">Low Priority</button>
+          </div>
+        </div>
+        <!--
         <div class="btnHead2">
           <button><img src="images/plus.png" alt=""></button>
           <button><img src="images/gear.svg" alt=""></button>
         </div>
+        -->
       </div>
 
       <!--===== S I D E B A R =====-->
@@ -30,8 +43,9 @@
 
         <div id="allProjects">
 
-          <div class="projects">
+          <div class="projects" id="firstProject">
             <p>ToDo List</p>
+            <h6>Fri Aug 05 2022 15:08:27 GMT-0500 (Colombia Standard Time)</h6>
             <!--<img src="images/xmark.svg" alt="">-->
           </div>
 
@@ -54,22 +68,10 @@
         <div class="displayContent" id="displayContent">
 
           <h2 id="h2Task">ToDo List</h2>
-          <h6 id="dateProject" hidden>Date</h6>
+          <h6 id="dateProject" hidden>Fri Aug 05 2022 15:08:27 GMT-0500 (Colombia Standard Time)</h6>
 
           <div id="taskContent">
-            <div id="allTasks">
-
-              <div class="cardToDo">
-                <input type="checkbox" class="checkbox" id="checked">
-                <input type="text" class="inputTask" id="inputTask">
-                <div class="imgToDo">
-                  <p id="dateTask">Date</p>
-                  <img src="images/unlock.svg" alt="">
-                  <img src="images/trash.svg" alt="">
-                </div>
-              </div>
-
-            </div>
+            <div id="allTasks"></div>
           </div>
 
           <div class="cardToDo2" id="showAddToDo">
@@ -78,8 +80,27 @@
 
           <div class="addTask" id="addTask">
             <input type="text" class="inputAddTask" id="inputAddTask" required>
-            <button id="btnAceptTask">Acept</button>
-            <button id="btnCancelTask">Cancel</button>
+            <h2>P r i o r i t y</h2>
+            <div class="priorityBtn">
+              <div>
+                <label for="priorityHigh">H i g h</label>
+                <input type="radio" name="priority" id="priorityHigh">
+              </div>
+              <!--
+              <div>
+                <label for="priorityMedium">M e d i u m</label>
+                <input type="radio" name="priority" id="priorityMedium">
+              </div>
+              -->
+              <div>
+                <label for="priorityLow">L o w</label>
+                <input type="radio" name="priority" id="priorityLow" checked>
+              </div>
+            </div>
+            <div class="confirmBtn">
+              <button id="btnAceptTask">Acept</button>
+              <button id="btnCancelTask">Cancel</button>
+            </div>
           </div>
 
         </div>

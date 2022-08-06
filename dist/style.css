@@ -22,7 +22,7 @@
   height: 100vh;
   display: grid;
   grid-template-columns: 35vh 1fr;
-  grid-template-rows: 10vh 85vh 5vh;
+  grid-template-rows: 8vh 87vh 5vh;
 }
 
 
@@ -32,8 +32,6 @@
 {
   position: relative;
   /*
-  top: 0;
-  left: 0;
   height: 10vh;
   width: 100%;
   */
@@ -55,13 +53,22 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 10vh;
+  height: 8vh;
   width: 100%;
   /*background-color: rgba(190, 50, 50, 0.9);*/
   border-top: 5px solid rgba(0, 0, 0, 0.9);
   border-bottom: 5px solid rgba(0, 0, 0, 0.9);
   filter: blur(5px);
   z-index: 4;
+}
+
+.header button
+{
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  border: none;
+  margin: 0 20px;
 }
 
 .btnHead1
@@ -83,6 +90,49 @@
   transition: 1s;
 }
 
+.menu
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-right: 50px;
+  background-color: transparent;
+  /*background-image: linear-gradient(to top, transparent, white, white);*/
+}
+
+.BtnMenu1, .BtnMenu2
+{
+  height: 100%;
+  z-index: 5;
+}
+
+.BtnMenu1 button, .BtnMenu2 button
+{
+  height: 40px;
+  width: 150px;
+  font-weight: bolder;
+  margin: 0 10px;
+  background-color: transparent;
+  border: none;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.BtnMenu1 button:hover, .BtnMenu2 button:hover
+{
+  color: var(--firstLight);
+  background-image: linear-gradient(to top, transparent, #111, #111);
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+}
+
+
+/*
 .btnHead2
 {
   display: grid;
@@ -107,15 +157,7 @@
 {
   transform: rotate(90deg);
 }
-
-.header button
-{
-  height: 50px;
-  width: 50px;
-  background-color: white;
-  border: none;
-  margin: 0 20px;
-}
+*/
 
 
 /* ================= S I D E B A R ================= */
@@ -130,9 +172,10 @@
   background-color: var(--radial);
   grid-column: 1 / 2;
   grid-row: 2 / 3;
-  height: 85vh;
+  height: 87vh;
   width: 35vh;
   padding: 100px 30px;
+  overflow-y: auto;
   z-index: 4;
 }
 
@@ -285,8 +328,10 @@
 
 .content
 {
-  padding: 50px 80px;
+  position: relative;
+  padding: 5vh 80px;
   background-image: linear-gradient(to top left, rgb(0, 0, 200), rgb(205, 240, 255), rgb(205, 240, 255), rgb(205, 240, 255));
+  overflow-y: auto;
 }
 
 .displayContent, #taskContent
@@ -310,17 +355,15 @@
   color: white;
   background-image: linear-gradient(to top left, purple, rgb(0, 120, 175), rgb(0, 0, 100), rgb(0, 0, 100), rgb(0, 0, 100));
   border-radius: 15px;
-  border-right: 5px solid aqua;
-  border-bottom: 5px solid aqua;
   margin: 5px 0;
   padding: 25px 0;
   padding-right: 5px;
-  transition: 2s;
+  transition: 0.5s;
 }
 
 .cardToDo:hover
 {
-  box-shadow: 0 0 20px aqua,
+  box-shadow: 0 0 20px #111,
   inset -5px -5px 10px #222;
 }
 
@@ -485,6 +528,7 @@ input[type="checkbox"]:checked::after
   width: 60%;
   display: none;
   justify-content: center;
+  justify-items: center;
   align-items: center;
   flex-wrap: wrap;
   margin: 20px 0;
@@ -492,6 +536,7 @@ input[type="checkbox"]:checked::after
   gap:20px 0;
   /*background-image: linear-gradient(to top left, rgb(190, 50, 50), white, rgb(190, 50, 50), rgb(190, 50, 50), rgb(190, 50, 50));*/
   background-image: linear-gradient(to top left, purple, rgb(0, 120, 175), rgb(0, 0, 100), rgb(0, 0, 100), rgb(0, 0, 100));
+  color: white;
   border: none;
   border-radius: 10px;
   box-shadow: 5px 5px 20px black,
@@ -520,6 +565,129 @@ input[type="checkbox"]:checked::after
   border: none;
   border-radius: 5px;
   box-shadow: inset -5px -5px 10px black;
+}
+
+/* ======== input[type="radio"] ======== */
+
+input[type="radio"]
+{
+  position: relative;
+  width: 40px;
+  height: 70px;
+  margin: 10px;
+  outline: none;
+  background: #111;
+  -webkit-appearance: none;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: -5px -5px 20px rgba(255, 255, 255, 0.1),
+              5px 5px 10px rgba(0, 0, 0, 1),
+              inset -2px -2px 5px rgba(255, 255, 255, 0.1),
+              inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+              0 0 0 2px #1f1f1f;
+  transition: 0.5s;
+}
+
+input[type="radio"]::before
+{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(to top, #000, #555);
+  border-radius: 20px;
+  box-shadow: 0 0 0 1px #232323;
+  transform: scale(0.98, 0.96);
+  transition: 1s;
+}
+
+input[type="radio"]:checked::before
+{
+  bottom: 30px;
+}
+
+input[type="radio"]::after
+{
+  content: "";
+  position: absolute;
+  clip-path: circle(25.0% at 50% 50%);
+  bottom: 10px;
+  left: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
+  border-radius: 20%;
+  background: #555;
+  transition: 1s ease all;
+}
+
+input[type="radio"]:checked::after
+{
+  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  transform: rotate(90deg);
+  bottom: calc(30px + 10px);
+  background: greenyellow;
+  box-shadow: 0 0 5px greenyellow,
+              0 0 15px greenyellow,
+              0 0 30px greenyellow;
+}
+
+/* ============================== */
+
+.priorityBtn
+{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  padding-bottom: 20px;
+  border-bottom: 2px solid black;
+}
+
+.priorityBtn div
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.priorityBtn div label
+{
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+#priorityHigh:checked, #priorityHigh:checked::after
+{
+  background-color: orangered;
+  box-shadow: 0 0 5px orangered,
+              0 0 15px orangered,
+              0 0 30px orangered;
+}
+
+#priorityMedium:checked, #priorityMedium:checked::after
+{
+  background-color: greenyellow;
+  box-shadow: 0 0 5px greenyellow,
+              0 0 15px greenyellow,
+              0 0 30px greenyellow;
+}
+
+#priorityLow:checked, #priorityLow:checked::after
+{
+  background-color: aqua;
+  box-shadow: 0 0 5px aqua,
+              0 0 15px aqua,
+              0 0 30px aqua;
+}
+
+.confirmBtn
+{
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 #btnAceptTask
@@ -558,6 +726,7 @@ footer
   bottom: 0;
   left: 0;
   */
+  bottom: 0;
   grid-column: 1 / 3;
   grid-row: 3 / 4;
   

@@ -6,6 +6,29 @@ function addNewProject(date)
 
   let allProjects = document.getElementById ('allProjects');
   let inputProjects = document.getElementById ('inputProjects');
+  
+
+  let firstProject = document.getElementById ('firstProject');
+  firstProject.addEventListener ('click', function()
+  {
+    let h2Task = document.getElementById ('h2Task');
+    h2Task.textContent = 'ToDo List';
+
+    let dateProject = document.getElementById ('dateProject');
+    dateProject.textContent = 'Fri Aug 05 2022 15:08:27 GMT-0500 (Colombia Standard Time)';
+
+    let taskContent = document.getElementById ('taskContent');
+
+    let display = document.getElementById ('allTasks');
+    display.remove();
+
+    let allTasks = document.createElement ('div');
+    allTasks.setAttribute ('id', 'allTasks');
+    taskContent.appendChild (allTasks);
+
+    displayProjectTask(this.lastElementChild.textContent);
+    //console.log (this.lastElementChild.textContent);
+  });
 
   let projects = document.createElement ('div');
   projects.setAttribute ('class', 'projects');
@@ -13,7 +36,7 @@ function addNewProject(date)
   projects.addEventListener ('click', function()
   {
     showTasks();
-    displayProjectTask(this.childNodes);
+    displayProjectTask(this.childNodes[1].textContent);
 
     //console.log (this.childNodes);
   });
@@ -63,7 +86,7 @@ function addNewProject(date)
   {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
-  
+
 }
 
 export default addNewProject;

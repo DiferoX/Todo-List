@@ -4,8 +4,34 @@ import addNewTask from "./addNewTasks";
 
 export let projectsArray = [];
 
+projectsArray.push (
+{
+  title: 'ToDo List',
+  date: 'Fri Aug 05 2022 15:08:27 GMT-0500 (Colombia Standard Time)',
+  task: [
+          {txt: 'bla bla bla 1', check: true, priority: 'High', date: 'Fri Aug 05 2022 15:09:00 GMT-0500 (Colombia Standard Time)'},
+          {txt: 'bla bla bla 2', check: true, priority: 'High', date: 'Fri Aug 05 2022 15:10:00 GMT-0500 (Colombia Standard Time)'},
+          {txt: 'bla bla bla 10', check: false, priority: 'High', date: 'Fri Aug 05 2022 15:18:00 GMT-0500 (Colombia Standard Time)'},
+          {txt: 'bla bla bla 13', check: false, priority: 'High', date: 'Fri Aug 05 2022 15:21:00 GMT-0500 (Colombia Standard Time)'},
+          {txt: 'bla bla bla 14', check: true, priority: 'High', date: 'Fri Aug 05 2022 15:22:00 GMT-0500 (Colombia Standard Time)'},
+          {txt: 'bla bla bla 3', check: true, priority: 'Low', date: 'Fri Aug 05 2022 15:11:00 GMT-0500 (Colombia Standard Time)'},
+          {txt: 'bla bla bla 4', check: false, priority: 'Low', date: 'Fri Aug 05 2022 15:12:00 GMT-0500 (Colombia Standard Time)'},
+          {txt: 'bla bla bla 5', check: false, priority: 'Low', date: 'Fri Aug 05 2022 15:13:00 GMT-0500 (Colombia Standard Time)'},
+          {txt: 'bla bla bla 6', check: true, priority: 'Low', date: 'Fri Aug 05 2022 15:14:00 GMT-0500 (Colombia Standard Time)'},
+          {txt: 'bla bla bla 7', check: true, priority: 'Low', date: 'Fri Aug 05 2022 15:15:00 GMT-0500 (Colombia Standard Time)'},
+          {txt: 'bla bla bla 8', check: false, priority: 'Low', date: 'Fri Aug 05 2022 15:16:00 GMT-0500 (Colombia Standard Time)'},
+          {txt: 'bla bla bla 9', check: true, priority: 'Low', date: 'Fri Aug 05 2022 15:17:00 GMT-0500 (Colombia Standard Time)'},
+          {txt: 'bla bla bla 11', check: true, priority: 'Low', date: 'Fri Aug 05 2022 15:19:00 GMT-0500 (Colombia Standard Time)'},
+          {txt: 'bla bla bla 12', check: true, priority: 'Low', date: 'Fri Aug 05 2022 15:20:00 GMT-0500 (Colombia Standard Time)'},
+          {txt: 'bla bla bla 15', check: false, priority: 'Low', date: 'Fri Aug 05 2022 15:23:00 GMT-0500 (Colombia Standard Time)'},
+        ]
+});
+
 
 /* ========== P R O J E C T S ========== */
+
+displayProjectTask("Fri Aug 05 2022 15:08:27 GMT-0500 (Colombia Standard Time)");
+
 
 let addProjects = document.getElementById ('addProjects');
 let inputProjects = document.getElementById ('inputProjects');
@@ -60,16 +86,34 @@ btnAceptTask.addEventListener ('click', function()
   showAddToDo.style.display = 'flex';
   addTask.style.display = 'none';
 
+  let priorityHigh = document.getElementById ('priorityHigh');
+  let priority = '';
+  if (priorityHigh.checked === true)
+  {
+    priority = 'High';
+  }
+  else
+  {
+    priority = 'Low';
+  }
+
   let inputUpperCase = stringUpperCase (inputAddTask.value);
   let newDateTask = String(new Date());
-  addNewTask (inputUpperCase, false, newDateTask);
+  addNewTask (inputUpperCase, false, priority, newDateTask);
   let getDateProject = document.getElementById ('dateProject');
 
   projectsArray.forEach (object => 
   {
     if (object.date === getDateProject.textContent)
     {
-      object.task.push ({txt: inputAddTask.value, check: false, date: newDateTask});
+      if (priorityHigh.checked === true)
+      {
+        object.task.unshift ({txt: inputAddTask.value, check: false, priority: 'High', date: newDateTask});
+      }
+      else
+      {
+        object.task.push ({txt: inputAddTask.value, check: false, priority: 'Low', date: newDateTask});
+      }
     }
   });
   inputAddTask.value = '';
@@ -86,12 +130,12 @@ btnCancelTask.addEventListener ('click', function()
 function displayProjectTask(a)
 {
   projectsArray.forEach (object => 
-  {    
-    if (object.date === (a[1].textContent))
+  {
+    if (object.date === (a))
     {
       object.task.forEach(element => 
       {
-        addNewTask(element.txt, element.check, element.date);
+        addNewTask(element.txt, element.check, element.priority, element.date);
       });
     }
   });
@@ -101,5 +145,30 @@ function stringUpperCase(str)
 {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+
+/* ========== M E N U ========== */
+/*
+let btnCompleted = document.getElementById ('btnCompleted');
+btnCompleted.addEventListener ('click', function()
+{
+  let dateProject = document.getElementById ('dateProject');
+  
+  projectsArray.forEach (object => 
+  {
+    if (object.date === dateProject.textContent)
+    {
+      object.task.forEach(element => 
+      {
+        if (element.check === true)
+        {
+          console.log (object.task);
+          //addNewTask(element.txt, element.check, element.priority, element.date);
+        }
+      });
+    }
+  });
+});
+*/
 
 export default displayProjectTask;
