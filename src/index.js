@@ -146,12 +146,68 @@ function stringUpperCase(str)
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+function showTasksMenu()
+{
+  let taskContent = document.getElementById ('taskContent');
+
+  let display = document.getElementById ('allTasks');
+  display.remove();
+
+  let allTasks = document.createElement ('div');
+  allTasks.setAttribute ('id', 'allTasks');
+  taskContent.appendChild (allTasks);
+}
+
 
 /* ========== M E N U ========== */
-/*
+let btnOption = 1;
+
+let btnAll = document.getElementById ('btnAll');
+btnAll.addEventListener ('click', function()
+{
+  btnOption = 1;
+  showTasksMenu();
+  let dateProject = document.getElementById ('dateProject');
+  
+  projectsArray.forEach (object => 
+  {
+    if (object.date === dateProject.textContent)
+    {
+      object.task.forEach(element => 
+      {
+        addNewTask(element.txt, element.check, element.priority, element.date);
+      });
+    }
+  });
+});
+
+let btnPending = document.getElementById ('btnPending');
+btnPending.addEventListener ('click', function()
+{
+  btnOption = 2;
+  showTasksMenu();
+  let dateProject = document.getElementById ('dateProject');
+  
+  projectsArray.forEach (object => 
+  {
+    if (object.date === dateProject.textContent)
+    {
+      object.task.forEach(element => 
+      {
+        if (element.check === false)
+        {
+          addNewTask(element.txt, element.check, element.priority, element.date);
+        }
+      });
+    }
+  });
+});
+
 let btnCompleted = document.getElementById ('btnCompleted');
 btnCompleted.addEventListener ('click', function()
 {
+  btnOption = 3;
+  showTasksMenu();
   let dateProject = document.getElementById ('dateProject');
   
   projectsArray.forEach (object => 
@@ -162,13 +218,122 @@ btnCompleted.addEventListener ('click', function()
       {
         if (element.check === true)
         {
-          console.log (object.task);
-          //addNewTask(element.txt, element.check, element.priority, element.date);
+          addNewTask(element.txt, element.check, element.priority, element.date);
         }
       });
     }
   });
 });
-*/
+
+let btnPriorityHigh = document.getElementById ('btnPriorityHigh');
+btnPriorityHigh.addEventListener ('click', function()
+{
+  showTasksMenu();
+  let dateProject = document.getElementById ('dateProject');
+  if (btnOption === 1)
+  {
+    projectsArray.forEach (object => 
+    {
+      if (object.date === dateProject.textContent)
+      {
+        object.task.forEach(element => 
+        {
+          if (element.priority === 'High')
+          {
+            addNewTask(element.txt, element.check, element.priority, element.date);
+          }
+        });
+      }
+    });
+  }
+  else if (btnOption === 2)
+  {
+    projectsArray.forEach (object => 
+    {
+      if (object.date === dateProject.textContent)
+      {
+        object.task.forEach(element => 
+        {
+          if ((element.check === false) && (element.priority === 'High'))
+          {
+            addNewTask(element.txt, element.check, element.priority, element.date);
+          }
+        });
+      }
+    });
+  }
+  else
+  {
+    projectsArray.forEach (object => 
+    {
+      if (object.date === dateProject.textContent)
+      {
+        object.task.forEach(element => 
+        {
+          if ((element.check === true) && (element.priority === 'High'))
+          {
+            addNewTask(element.txt, element.check, element.priority, element.date);
+          }
+        });
+      }
+    });
+  }
+});
+
+let btnPriorityLow = document.getElementById ('btnPriorityLow');
+btnPriorityLow.addEventListener ('click', function()
+{
+  showTasksMenu();
+  let dateProject = document.getElementById ('dateProject');
+  if (btnOption === 1)
+  {
+    projectsArray.forEach (object => 
+    {
+      if (object.date === dateProject.textContent)
+      {
+        object.task.forEach(element => 
+        {
+          if (element.priority === 'Low')
+          {
+            addNewTask(element.txt, element.check, element.priority, element.date);
+          }
+        });
+      }
+    });
+  }
+  else if (btnOption === 2)
+  {
+    projectsArray.forEach (object => 
+    {
+      if (object.date === dateProject.textContent)
+      {
+        object.task.forEach(element => 
+        {
+          if ((element.check === false) && (element.priority === 'Low'))
+          {
+            addNewTask(element.txt, element.check, element.priority, element.date);
+          }
+        });
+      }
+    });
+  }
+  else
+  {
+    projectsArray.forEach (object => 
+    {
+      if (object.date === dateProject.textContent)
+      {
+        object.task.forEach(element => 
+        {
+          if ((element.check === true) && (element.priority === 'Low'))
+          {
+            addNewTask(element.txt, element.check, element.priority, element.date);
+          }
+        });
+      }
+    });
+  }
+});
+
 
 export default displayProjectTask;
